@@ -4,9 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 
@@ -18,27 +17,27 @@ public class UsuarioEntity {
     @Column (name = "id_usuario")
     private Long idUsuario;
     
-    @NotEmpty(message = "Nome não pode ser nulo ou vazio")
-    @Max(value = 50, message = "Nome possui um limite de 50 caracteres")
+    @NotBlank(message = "Nome não pode ser nulo ou vazio")
+    @Size(max = 50, message = "Nome possui um limite de 50 caracteres")
     @Column(name = "nome_usuario")
     private String nome;
     
-    @NotEmpty(message = "Login não pode ser nulo ou vazio")
+    @NotBlank(message = "Login não pode ser nulo ou vazio")
     @Size(min = 5, max = 10, message = "Login deve ter ter entre 5 e 10 caracteres")
     @Column(name = "login_usuario", unique = true)
     private String login;
     
-    @NotEmpty(message = "Email não pode ser nulo ou vazio")
+    @NotBlank(message = "Email não pode ser nulo ou vazio")
     @Email(message = "Email deve ser válido")
-    @Min(value = 10, message = "Nome possui um valor minimo de 10 caracteres")
+    @Size(min = 10, message = "Email possui um valor minimo de 10 caracteres")
     @Column(name = "email_usuario")
     private String email;
     
-    @NotEmpty(message = "Senha não pode ser nula ou vazia")
+    @NotBlank(message = "Senha não pode ser nula ou vazia")
     @Column(name = "senha_usuario")
     private String senha;
     
-    @NotEmpty(message = "Data de nascimento não pode ser nula ou vazia")
+    @NotNull(message = "Data de nascimento não pode ser nula ou vazia")
     @PastOrPresent(message = "Data de nascimento deve ser válida")
     @Column(name = "dt_nascimento_usuario")
     private LocalDate dtNascimeto;
