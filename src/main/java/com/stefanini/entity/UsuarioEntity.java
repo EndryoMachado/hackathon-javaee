@@ -23,7 +23,7 @@ public class UsuarioEntity {
     private String nome;
     
     @NotBlank(message = "Login não pode ser nulo ou vazio")
-    @Size(min = 5, max = 10, message = "Login deve ter ter entre 5 e 10 caracteres")
+    @Size(min = 5, max = 20, message = "Login deve ter ter entre 5 e 20 caracteres")
     @Column(name = "login_usuario", unique = true)
     private String login;
     
